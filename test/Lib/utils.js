@@ -38,12 +38,24 @@ class utils extends Page {
 		}
 	}
 
-    async addStepWithScreenShotInReport(message) {
-        await allureReporter.addStep(message, await browser.takeScreenshot())
-        console.log(message)
+    async waitUntilClickable(element,timeoutValue) {
+        if (timeoutValue == undefined || timeoutValue == null) {
+            await element.waitForClickable({ timeout: 30000, timeoutMsg: (await element.selector) + ' not clickable' })
+            return true;
+        }
+        else {
+            await element.waitForClickable({ timeout: timeoutValue, timeoutMsg: (await element.selector) + ' not clickable' })
+            return true;
+        }
     }
+
+    async addStepWithScreenShotInReport(message) {
+        const screenshot = await browser.takeScreenshot()
+        allureReporter.addStep(message, screenshot)
+		console.log(message)
+	}
     async addScreenShotWithMessageInReport(message) {
-        let outputFile = '..\\WebDriverIOAutomationTesting\\allure-reports\\screenShotFile.png';
+        const outputFile = '..\\WebDriverIOAutomationTesting\\allure-results\\screenshotFile.png';
         await allureReporter.addAttachment(message, await browser.saveScreenshot(outputFile))
         console.log(message)
 

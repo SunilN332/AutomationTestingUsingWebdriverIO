@@ -21,6 +21,8 @@ class LoginPage extends Page {
     get btnSubmit () {
         return $('//input[@name="login-button"]');
     }
+    get openMenuBtn() {return $('//button[text() = "Open Menu"]')}
+    get logOutBtn() {return $('//a[@id="logout_sidebar_link"]')}
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -46,10 +48,16 @@ class LoginPage extends Page {
             }
           );
           console.log(await browser.getWindowSize())
-          await utils.addStepWithScreenShotInReport("window maximized")
-        //   await expect(browser).toHaveTitle()
+          await expect(await browser).toHaveTitle('Swag Labs')
           
     }
+
+    async logout() {
+        await browser.refresh()
+        await this.openMenuBtn.click()
+        await this.logOutBtn.click()
+    }
+
 }
 
 export default new LoginPage();
