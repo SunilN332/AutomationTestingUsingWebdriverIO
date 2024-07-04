@@ -23,6 +23,18 @@ export const config = {
     specs: [
         './test/specs/**/*.js'
     ],
+    suites: { 
+        swagLabs: [
+            './test/specs/test.e2e.js',
+            './test/specs/validateLoginPage.spec.js',
+            './test/specs/openMenu.spec.js',
+            './test/specs/addProductionToCartValidation.spec.js',
+            './test/specs/removeCartItemsFromCart.spec.js',
+            './test/specs/initiateShipmentCartItemsAndCompleteTheOrder.spec.js'
+
+        ],
+
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -43,14 +55,21 @@ export const config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+        //comment below args: when running in local
+        //args: ['--no-sandbox', '--disable-dev-shm-usage','--headless'],
+        prefs:{
+                "autofill.profile_enabled":false
+            }
+    }
     }],
 
     //
