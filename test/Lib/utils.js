@@ -1,5 +1,6 @@
 import Page from "../pageobjects/page.js"
 import allureReporter from "@wdio/allure-reporter"
+import crypto from 'crypto'
 
 
 class utils extends Page {
@@ -30,6 +31,24 @@ class utils extends Page {
 		}
 
 	}
+	async generateRandomAlphabets(length) {
+		let result = '';
+		let characters = "ABCDEFGHIJKLMNOPURSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		let charactersLenght = characters.length
+		for (let i=0; i <=length; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLenght))
+		}
+		return result 
+	}
+
+	async generateRandomNumber(length) {
+		let result = ''
+		for(let i=0; i< length; i++) {
+			result += crypto.randomInt(0, 9) // generates ramdom nub between 0 to 9
+		}
+		 return result
+	}
+
     async doSetValue(element, value) {
 		if (await element.isDisplayed()) {
 			await element.setValue(value)
