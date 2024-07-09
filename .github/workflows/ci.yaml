@@ -9,3 +9,15 @@ name: Swag Labs WebdriverIO Automation Demo Framework
             required: false
               defualt: dev
               type: choose
+              options:
+                - dev
+                - stage
+                - PROD
+
+jobs:
+  RunSwagLabsSuite:
+    runs-on: ubuntu-latest 
+    strategy:
+      matrix: 
+        test-suites:
+          - swagLabs
