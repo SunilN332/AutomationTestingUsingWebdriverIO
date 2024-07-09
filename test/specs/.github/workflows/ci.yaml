@@ -1,0 +1,11 @@
+name: Swag Labs WebdriverIO Automation Demo Framework
+ 
+ on: 
+  workflow_call: 
+    workflow_dispatch:
+      inputs: 
+        testEnvironment: 
+           description: select environment which need to run in tests 
+            required: false
+              defualt: dev
+              type: choose
