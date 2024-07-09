@@ -9,8 +9,8 @@ on:
           defualt: dev
           type: choose
           options:
-            - dev
-            - stage
+            - Dev
+            - Stage
             - PROD
 
 jobs:
@@ -20,3 +20,7 @@ jobs:
       matrix: 
         test-suites:
           - swagLabs
+
+    steps:
+      name: Checkout Source
+      uses: checkout/checkout@v4
