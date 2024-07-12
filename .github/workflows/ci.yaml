@@ -16,8 +16,8 @@ jobs:
         with: 
           feath-depth: 0
           repository: ${{github.repository}}
-          token: ${{sectets.GITHUB_TOKEN
-      - name: Install node ${{matrix.node-version}}
+          token: ${{sectets.GITHUB_TOKEN}}
+      - name: Install node latest
         if: always()
         uses: actions/setup-node@v1
         with: 
