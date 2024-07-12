@@ -1,6 +1,9 @@
 name: Swag Labs WebdriverIO Automation Demo Framework
 
-on: [push]
+on: 
+  push:
+    branch: ['main']
+
 
 jobs: 
   RunSwagLabsSuite: 
