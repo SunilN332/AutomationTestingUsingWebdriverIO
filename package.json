@@ -1,5 +1,5 @@
 {
-  "name": "WebDriverIOAutomationTesting",
+  "name": "AutomationTestingUsingWebdriverIO",
   "type": "module",
   "devDependencies": {
     "@wdio/allure-reporter": "^8.39.0",
