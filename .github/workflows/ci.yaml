@@ -3,32 +3,32 @@ name: Swag Labs WebdriverIO Automation Demo Framework
 on: [push]
 
 jobs: 
-  build: 
+  RunSwagLabsSuite: 
     runs-on: ubuntu-latest
     strategy: 
       matrix: 
         node-version: node-latest
-# feath repository code
-  steps:
-    - name: Checkout source code 
-      uses: actions/checkout@v1
-      with: 
-        feath-depth: 0
-        repository: ${{github.repository}}
-        token: ${{sectets.GITHUB_TOKEN
-    - name: Install node ${{matrix.node-version}}
-      if: always()
-      uses: actions/setup-node@v1
-      with: 
-        node-version: ${{matrix.node-version}}
-    - name: Install node modules
-      run: |
-        npm install
-    - name:  Run Swag Labs  suite
-      if: always()
-      run: |
-        npx wdio run ./wdio.conf.js --suite swagLabs
-      
+      # feath repository code
+    steps:
+      - name: Checkout source code 
+        uses: actions/checkout@v1
+        with: 
+          feath-depth: 0
+          repository: ${{github.repository}}
+          token: ${{sectets.GITHUB_TOKEN
+      - name: Install node ${{matrix.node-version}}
+        if: always()
+        uses: actions/setup-node@v1
+        with: 
+          node-version: ${{matrix.node-version}}
+      - name: Install node modules
+        run: |
+          npm install
+      - name:  Run Swag Labs  suite
+        if: always()
+        run: |
+          npx wdio run ./wdio.conf.js --suite swagLabs
+        
 
 
 
