@@ -16,7 +16,7 @@ jobs:
         with: 
           feath-depth: 0
           repository: ${{github.repository}}
-          token: ${{sectets.Swag_Labs_API_Key}}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install node latest
         if: always()
         uses: actions/setup-node@v1
