@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy: 
       matrix: 
-        node-version: node-latest
+        test-suite:
+          -  swagLabs
       # feath repository code
     steps:
       - name: Checkout source code 
@@ -20,7 +21,7 @@ jobs:
         if: always()
         uses: actions/setup-node@v1
         with: 
-          node-version: ${{matrix.node-version}}
+          node-version: latest
       - name: Install node modules
         run: |
           npm install
@@ -28,7 +29,7 @@ jobs:
         if: always()
         run: |
           npx wdio run ./wdio.conf.js --suite swagLabs
-        
+
 
 
 
