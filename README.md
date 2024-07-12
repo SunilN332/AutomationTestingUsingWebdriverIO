@@ -23,13 +23,26 @@ This project requires lastest Nodejs version and other packages that are listed 
 
 Example:  
  ```
-  add suite 
+  suites: { 
+        swagLabs: [
+            './test/specs/test.e2e.js',
+            './test/specs/validateLoginPage.spec.js',
+            './test/specs/openMenu.spec.js',
+            './test/specs/addProductionToCartValidation.spec.js',
+            './test/specs/removeCartItemsFromCart.spec.js',
+            './test/specs/initiateShipmentCartItemsAndCompleteTheOrder.spec.js'
+        ],
+    },
  ```
 
 - To execute the individual script, use the below command.
 ```
  npx wdio run .\wdio.conf.js --spec "file path"
 ```
+Example:  
+ ```
+    test/specs/test.e2e.js
+ ```
 
 ## Report:
  
