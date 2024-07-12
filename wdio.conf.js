@@ -65,7 +65,7 @@ export const config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
         //comment below args: when running in local
-        //args: ['--no-sandbox', '--disable-dev-shm-usage','--headless'],
+        args: ['--no-sandbox', '--disable-dev-shm-usage','--headless'],
         prefs:{
                 "autofill.profile_enabled":false
             }

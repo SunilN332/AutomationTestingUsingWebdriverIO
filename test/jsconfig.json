@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "types": [
-            "node", 
-            "@wdio/globles/types",
-            "@wdio/mocha-framework"
-        ]
-    }
-}

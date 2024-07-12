@@ -1,6 +1,9 @@
 name: Swag Labs WebdriverIO Automation Demo Framework
 
-on: [push]
+on: 
+  push:
+    branch: ['main']
+
 
 jobs: 
   RunSwagLabsSuite: 
@@ -21,7 +24,7 @@ jobs:
         if: always()
         uses: actions/setup-node@v1
         with: 
-          node-version: latest
+          node-version: 18.x
       - name: Install node modules
         run: |
           npm install
