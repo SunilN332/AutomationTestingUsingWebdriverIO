@@ -5,7 +5,7 @@ import { BASE_URLS } from '../utils/urls.js';
 
 describe(`Validation of swag labs  open menu`, () => {
     before(async () => {
-        await loginPage.open(BASE_URLS);
+       await loginPage.open(BASE_URLS.swagLabsUrl);
         await loginPage.login(config.userName, config.password);
     });
     it(`Validate Open menu`, async () => {
