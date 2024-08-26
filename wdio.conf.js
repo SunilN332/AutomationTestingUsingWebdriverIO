@@ -1,3 +1,5 @@
+import { generateBrowserCapabilities } from "./broserCapabilities.js";
+import { suites } from "./suites.js";
 export const config = {
     //
     // ====================
@@ -23,19 +25,8 @@ export const config = {
     specs: [
         './test/specs/**/*.js'
     ],
-    suites: { 
-        swagLabs: [
-            './test/specs/test.e2e.js',
-            './test/specs/validateLoginPage.spec.js',
-            './test/specs/openMenu.spec.js',
-            './test/specs/addProductionToCartValidation.spec.js',
-            './test/specs/removeCartItemsFromCart.spec.js',
-            './test/specs/initiateShipmentCartItemsAndCompleteTheOrder.spec.js'
-
-        ],
-
-    },
-    // Patterns to exclude.
+    suites,
+   // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
@@ -61,16 +52,7 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-        //comment below args: when running in local
-        args: ['--no-sandbox', '--disable-dev-shm-usage','--headless'],
-        prefs:{
-                "autofill.profile_enabled":false
-            }
-    }
-    }],
+    capabilities: [generateBrowserCapabilities('chrome')],
 
     //
     // ===================
@@ -257,7 +239,7 @@ export const config = {
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        if (!passed) {
+        if (!error || !passed) {
             await browser.takeScreenshot();
         }
     },
