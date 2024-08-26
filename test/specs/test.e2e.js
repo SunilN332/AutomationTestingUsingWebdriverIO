@@ -6,7 +6,7 @@ import { BASE_URLS } from '../utils/urls.js';
 
 describe('My Login application', () => {
     it('should login with valid credentials', async () => {
-        await LoginPage.open(BASE_URLS);
+       await loginPage.open(BASE_URLS.swagLabsUrl);
         await LoginPage.login(config.userName, config.password);
     });
 });

@@ -5,7 +5,7 @@ import { BASE_URLS } from '../utils/urls.js';
 
 describe('validation of add products to cart', () => {
     before(async () => {
-        await loginPage.open(BASE_URLS);
+       await loginPage.open(BASE_URLS.swagLabsUrl);
         await loginPage.login(config.userName, config.password);
     });
 

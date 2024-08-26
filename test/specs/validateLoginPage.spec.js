@@ -5,7 +5,7 @@ import { BASE_URLS } from '../utils/urls.js';
 
 describe('validate swag labs Log in page  DOM elements', () => {
     it('Validation of Swag labs page', async () => {
-        await loginPage.open(BASE_URLS);
+        await loginPage.open(BASE_URLS.swagLabsUrl);
         await validateLoginPage.validateLoginPage();
     });
 });

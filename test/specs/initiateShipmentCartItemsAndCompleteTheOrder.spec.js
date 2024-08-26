@@ -5,7 +5,7 @@ import { BASE_URLS } from '../utils/urls.js';
 
 describe(`validation of iniate shipment cart items and complete the order`, () => {
     before(async () => {
-        await loginPage.open(BASE_URLS)
+        await loginPage.open(BASE_URLS.swagLabsUrl);)
         await loginPage.login(config.userName, config.password);
     });
     it(`iniate shipment cart items and complete the order`, async () => {
