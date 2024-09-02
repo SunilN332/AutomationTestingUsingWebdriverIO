@@ -1,7 +1,7 @@
 import Page from './page.js';
 import utils from '../Lib/utils.js';
 
-class openMenu extends Page {
+class OpenMenu extends Page {
     get openMenuBtn() {
         return $('//button[text() = "Open Menu"]');
     }
@@ -33,4 +33,4 @@ class openMenu extends Page {
     }
 }
 
-export default new openMenu();
+export default new OpenMenu();

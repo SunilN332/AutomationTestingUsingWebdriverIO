@@ -2,12 +2,12 @@ import Page from '../pageobjects/page.js';
 import allureReporter from '@wdio/allure-reporter';
 import crypto from 'crypto';
 
-class utils extends Page {
+class Utils extends Page {
     async objClick(element) {
         if (await element.waitForClickable()) {
             await element.click();
         } else {
-            await console(element + ' is not clickable');
+            console.log(element + ' is not clickable');
         }
     }
 
@@ -30,13 +30,13 @@ class utils extends Page {
         if (await element.waitForClickable()) {
             await element.selectByVisibleText(visibleText);
         } else {
-            await console((await element.selector) + ' is not clickable');
+            console.log((await element.selector) + ' is not clickable');
         }
     }
     async generateRandomAlphabets(length) {
         let result = '';
-        let characters = 'ABCDEFGHIJKLMNOPURSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        let charactersLenght = characters.length;
+        const characters = 'ABCDEFGHIJKLMNOPURSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        const charactersLenght = characters.length;
         for (let i = 0; i <= length; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLenght));
         }
@@ -87,4 +87,4 @@ class utils extends Page {
     }
 }
 
-export default new utils();
+export default new Utils();
