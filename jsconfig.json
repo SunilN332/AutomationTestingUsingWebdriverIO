@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework"]
-        // "checkJs": true
+        "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework"],
+        "checkJs": true
     }
 }

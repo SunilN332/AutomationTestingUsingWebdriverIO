@@ -1,7 +1,7 @@
 import utils from '../Lib/utils.js';
 import Page from './page.js';
 
-class loginPageValidation extends Page {
+class LoginPageValidation extends Page {
     get swagLabs() {
         return $('//div[@class="login_logo"]');
     }
@@ -36,4 +36,4 @@ class loginPageValidation extends Page {
     }
 }
 
-export default new loginPageValidation();
+export default new LoginPageValidation();

@@ -5,7 +5,6 @@ export const suites = {
         './test/specs/openMenu.spec.js',
         './test/specs/addProductionToCartValidation.spec.js',
         './test/specs/removeCartItemsFromCart.spec.js',
-        './test/specs/initiateShipmentCartItemsAndCompleteTheOrder.spec.js'
-
-    ]
-}
+        './test/specs/initiateShipmentCartItemsAndCompleteTheOrder.spec.js',
+    ],
+};

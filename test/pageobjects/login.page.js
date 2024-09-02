@@ -1,7 +1,5 @@
 import { $ } from '@wdio/globals';
 import Page from './page.js';
-import config from '../Lib/config-qaint.js';
-import utils from '../Lib/utils.js';
 
 /**
  * sub page containing specific selectors and methods for a specific page

@@ -1,7 +1,7 @@
 import Page from './page.js';
 import utils from '../Lib/utils.js';
 
-class productSection extends Page {
+class ProductSection extends Page {
     get products() {
         return $('//span[@data-test="title"]');
     }
@@ -95,9 +95,9 @@ class productSection extends Page {
         await browser.execute('arguments[0].click();', await this.shopptingCartBtn);
         await utils.waitUntilClickable(this.continueShopping);
         await utils.objClick(this.checkoutBtn);
-        let firstname = await utils.generateRandomAlphabets(8);
-        let lastname = await utils.generateRandomAlphabets(8);
-        let zipcode = await utils.generateRandomNumber(5);
+        const firstname = await utils.generateRandomAlphabets(8);
+        const lastname = await utils.generateRandomAlphabets(8);
+        const zipcode = await utils.generateRandomNumber(5);
         await utils.doSetValue(this.firstName, firstname);
         await utils.doSetValue(this.lastName, lastname);
         await utils.doSetValue(await this.zipCode, zipcode);
@@ -109,4 +109,4 @@ class productSection extends Page {
         await utils.objClick(this.backtoHomeBtn);
     }
 }
-export default new productSection();
+export default new ProductSection();
