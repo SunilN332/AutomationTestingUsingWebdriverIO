@@ -17,7 +17,8 @@
         "formet": "prettier --write .",
         "formet:check": "prettier --check .",
         "lint": "eslint",
-        "lint:fix": "eslint --fix"
+        "lint:fix": "eslint --fix",
+        "spec": "node run-spec.js"
     },
     "dependencies": {
         "@wdio/allure-reporter": "^9.0.4",
