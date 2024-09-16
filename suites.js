@@ -1,3 +1,6 @@
+/**
+ * list of suites
+ */
 export const suites = {
     swagLabs: [
         './test/specs/test.e2e.js',

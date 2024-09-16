@@ -2,6 +2,7 @@ import globals from 'globals';
 import js from '@eslint/js';
 
 export default [
+    // ignore files and directories
     {
         ignores: ['**/node_modules/', '**/dist/', '**/build/', '**/wdio.conf.js'],
     },
