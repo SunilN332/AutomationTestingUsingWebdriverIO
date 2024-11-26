@@ -19,14 +19,10 @@ jobs:
                   feath-depth: 0
                   repository: ${{github.repository}}
                   token: ${{ secrets.GITHUB_TOKEN }}
-            - name: Install node latest
-              if: always()
+            - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: 'lts/*'
-            - name: Install node modules
-              run: |
-                  npm install
             - name: Update npm
               run: npm install -g npm@latest
             - name: Update dependencies
@@ -35,6 +31,11 @@ jobs:
                   npm install --legacy-peer-deps
             - name: Cache dependencies
               uses: actions/cache@v3
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.OS }}-node-
             - name: Run Swag Labs  suite
               if: always()
               run: |
