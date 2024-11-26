@@ -16,13 +16,13 @@ git clone https://github.com/sunilNreddy332/WebDriverIOAutomationTesting.git
 
 This project requires lastest Nodejs version and other packages that are listed in the package.json file.
 
--   Install latest version node
--   To install the required packages run the below command:
--   `npm install`
+- Install latest version node
+- To install the required packages run the below command:
+- `npm install`
 
 ### Execution:
 
--   To execute as suite, use below command.
+- To execute as suite, use below command.
 
 ```
  npm run suiteName
@@ -45,7 +45,7 @@ Example:
    },
 ```
 
--   To execute the individual script, use the below command.
+- To execute the individual script, use the below command.
 
 ```
  npx wdio run .\wdio.conf.js --spec "file path"
@@ -59,7 +59,7 @@ Example:
 
 ## Report:
 
--   To generate the allure report, use the below commands.
+- To generate the allure report, use the below commands.
 
 ```
 - npm run generatereport
