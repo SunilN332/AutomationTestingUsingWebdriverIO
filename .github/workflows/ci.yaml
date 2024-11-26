@@ -27,6 +27,14 @@ jobs:
             - name: Install node modules
               run: |
                   npm install
+            - name: Update npm
+              run: npm install -g npm@latest
+            - name: Update dependencies
+              run: |
+                  rm -rf node_modules package-lock.json
+                  npm install --legacy-peer-deps
+            - name: Cache dependencies
+              uses: actions/cache@v3
             - name: Run Swag Labs  suite
               if: always()
               run: |
