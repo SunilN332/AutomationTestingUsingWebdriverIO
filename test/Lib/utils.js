@@ -81,7 +81,8 @@ class Utils extends Page {
         console.log(message);
     }
     async addScreenShotWithMessageInReport(message) {
-        const outputFile = '..\\WebDriverIOAutomationTesting\\allure-results\\screenshotFile.png';
+        const outputFile =
+            '..\\AutomationTestingUsingWebdriverIO\\allure-results\\screenshotFile.png';
         await allureReporter.addAttachment(message, await browser.saveScreenshot(outputFile));
         console.log(message);
     }
