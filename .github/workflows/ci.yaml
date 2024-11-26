@@ -14,20 +14,28 @@ jobs:
             # feath repository code
         steps:
             - name: Checkout source code
-              uses: actions/checkout@v1
+              uses: actions/checkout@v4
               with:
                   feath-depth: 0
                   repository: ${{github.repository}}
                   token: ${{ secrets.GITHUB_TOKEN }}
             - name: Install node latest
               if: always()
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v4
               with:
-                  node-version: 18.x
+                  node-version: 'lts/*'
             - name: Install node modules
               run: |
                   npm install
+            - name: Update npm
+              run: npm install -g npm@latest
+            - name: Update dependencies
+              run: |
+                  rm -rf node_modules package-lock.json
+                  npm install --legacy-peer-deps
+            - name: Cache dependencies
+              uses: actions/cache@v3
             - name: Run Swag Labs  suite
               if: always()
               run: |
-                  npx wdio run ./wdio.conf.js --suite swagLabs
+                  npm run suite swagLabs

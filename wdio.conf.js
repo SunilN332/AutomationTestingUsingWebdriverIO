@@ -1,5 +1,6 @@
-import { generateBrowserCapabilities } from "./broserCapabilities.js";
-import { suites } from "./suites.js";
+import { generateBrowserCapabilities } from './broserCapabilities.js';
+import { suites } from './suites.js';
+import moment from 'moment';
 export const config = {
     //
     // ====================
@@ -22,11 +23,9 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: [
-        './test/specs/**/*.js'
-    ],
+    specs: ['./test/specs/**/*.js'],
     suites,
-   // Patterns to exclude.
+    // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
@@ -110,7 +109,7 @@ export const config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'mocha',
-    
+
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
@@ -127,21 +126,21 @@ export const config = {
     reporters: [
         'spec',
         [
-          'allure',
-          {
-            outputDir: 'allure-results',
-            disableMochaHooks: true,
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: false,
-          }
-        ]
-      ],
+            'allure',
+            {
+                outputDir: 'allure-results',
+                disableMochaHooks: true,
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
+            },
+        ],
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
     },
 
     //
@@ -196,8 +195,9 @@ export const config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+        console.log('Running test specs:', JSON.stringify(specs, null, 2));
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
@@ -238,12 +238,21 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        if (!error || !passed) {
-            await browser.takeScreenshot();
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        if (error || !passed) {
+            const currentUrl = await browser.getUrl();
+            const testName = test.title;
+            console.log('=== Test Failure Details ===');
+            console.log(`Test Name: ${testName}`);
+            console.log(`URL: ${currentUrl}`);
+            console.log('Duration', moment.utc(duration).format('mm[m] ss[s]'));
+
+            if (error) {
+                console.log('Error:', error.message);
+                console.log('Stack:', error.stack);
+            }
         }
     },
-
 
     /**
      * Hook that gets executed after the suite has ended
@@ -288,22 +297,22 @@ export const config = {
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
     /**
-    * Gets executed when a refresh happens.
-    * @param {string} oldSessionId session ID of the old session
-    * @param {string} newSessionId session ID of the new session
-    */
+     * Gets executed when a refresh happens.
+     * @param {string} oldSessionId session ID of the old session
+     * @param {string} newSessionId session ID of the new session
+     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
     /**
-    * Hook that gets executed before a WebdriverIO assertion happens.
-    * @param {object} params information about the assertion to be executed
-    */
+     * Hook that gets executed before a WebdriverIO assertion happens.
+     * @param {object} params information about the assertion to be executed
+     */
     // beforeAssertion: function(params) {
     // }
     /**
-    * Hook that gets executed after a WebdriverIO assertion happened.
-    * @param {object} params information about the assertion that was executed, including its results
-    */
+     * Hook that gets executed after a WebdriverIO assertion happened.
+     * @param {object} params information about the assertion that was executed, including its results
+     */
     // afterAssertion: function(params) {
     // }
-}
+};

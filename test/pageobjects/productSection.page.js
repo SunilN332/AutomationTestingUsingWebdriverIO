@@ -1,5 +1,6 @@
 import Page from './page.js';
 import utils from '../Lib/utils.js';
+import DataGenerator from '../utils/DataGenerator.js';
 
 class ProductSection extends Page {
     get products() {
@@ -95,11 +96,11 @@ class ProductSection extends Page {
         await browser.execute('arguments[0].click();', await this.shopptingCartBtn);
         await utils.waitUntilClickable(this.continueShopping);
         await utils.objClick(this.checkoutBtn);
-        const firstname = await utils.generateRandomAlphabets(8);
-        const lastname = await utils.generateRandomAlphabets(8);
-        const zipcode = await utils.generateRandomNumber(5);
-        await utils.doSetValue(this.firstName, firstname);
-        await utils.doSetValue(this.lastName, lastname);
+        const firstname = await DataGenerator.generateFirstName(8);
+        const lastname = await DataGenerator.generateLastName(8);
+        const zipcode = await DataGenerator.generateAddress().zipCode;
+        await utils.doSetValue(await this.firstName, firstname);
+        await utils.doSetValue(await this.lastName, lastname);
         await utils.doSetValue(await this.zipCode, zipcode);
         await utils.objClick(this.continueBtn);
         await utils.waitUntilDisplayed(this.paymentInfo);
